@@ -1,126 +1,77 @@
-// ===========================
-// DATOS: todos los ramos (1-9) con id, nombre, créditos y prerrequisitos
-// Nota: prerrequisitos pueden ser códigos (p.ej. "CM0211") o condiciones de créditos con formato "CREDITS>=46".
-// ===========================
+// ----------------------
+// Pensum completo (datos)
+ // ----------------------
 const materias = [
   // SEM 1
-  { id:"BU0008", nombre:"Inducción (BU0008)", creditos:0, prereq:[] },
+  { id:"BU0008", nombre:"Inducción (BU0008)", creditos:0, prereq:[], coreq:[] },
   { id:"BU0011", nombre:"Bienestar Universitario (BU0011)", creditos:1, prereq:[], coreq:["BU0600"] },
-  { id:"BU0600", nombre:"Taller de Salud (BU0600)", creditos:0, prereq:[] },
-  { id:"CM0211", nombre:"Matemáticas 1 (CM0211)", creditos:3, prereq:[] },
-  { id:"EC0418", nombre:"Economía (EC0418)", creditos:3, prereq:[] },
-  { id:"NI0104", nombre:"Negocios Internacionales (NI0104)", creditos:3, prereq:["BILINGUE_B1"] },
-  { id:"NI0310", nombre:"Proyecto 0: Aprendizaje activo (NI0310)", creditos:1, prereq:[] },
-  { id:"NI0311", nombre:"Búsqueda de información (NI0311)", creditos:1, prereq:[] },
-  { id:"OG0360", nombre:"Administración y Estrategia (OG0360)", creditos:3, prereq:[] },
+  { id:"BU0600", nombre:"Taller de Salud (BU0600)", creditos:0, prereq:[], coreq:[] },
+  { id:"CM0211", nombre:"Matemáticas 1 (CM0211)", creditos:3, prereq:[], coreq:[] },
+  { id:"EC0418", nombre:"Economía (EC0418)", creditos:3, prereq:[], coreq:[] },
+  { id:"NI0104", nombre:"Negocios Internacionales (NI0104)", creditos:3, prereq:["BILINGUE_B1"], coreq:[] },
+  { id:"NI0310", nombre:"Proyecto 0: Aprendizaje activo (NI0310)", creditos:1, prereq:[], coreq:[] },
+  { id:"NI0311", nombre:"Búsqueda de información (NI0311)", creditos:1, prereq:[], coreq:[] },
+  { id:"OG0360", nombre:"Administración y Estrategia (OG0360)", creditos:3, prereq:[], coreq:[] },
 
   // SEM 2
-  { id:"CM0212", nombre:"Matemáticas 2 (CM0212)", creditos:3, prereq:["CM0211"] },
-  { id:"CO0342", nombre:"Información financiera y de costos (CO0342)", creditos:3, prereq:[] },
-  { id:"NI0100", nombre:"Mercadeo Internacional (NI0100)", creditos:3, prereq:["NI0104"] },
-  { id:"NI0312", nombre:"Comunicación intercultural (NI0312)", creditos:2, prereq:[] },
+  { id:"CM0212", nombre:"Matemáticas 2 (CM0212)", creditos:3, prereq:["CM0211"], coreq:[] },
+  { id:"CO0342", nombre:"Información financiera y de costos (CO0342)", creditos:3, prereq:[], coreq:[] },
+  { id:"NI0100", nombre:"Mercadeo Internacional (NI0100)", creditos:3, prereq:["NI0104"], coreq:[] },
+  { id:"NI0312", nombre:"Comunicación intercultural (NI0312)", creditos:2, prereq:[], coreq:[] },
   { id:"NI0313", nombre:"Proyecto 1: Laboratorio de culturas (NI0313)", creditos:3, prereq:["NI0312"], coreq:[] },
-  { id:"NI0314", nombre:"Gestión de la información (NI0314)", creditos:1, prereq:["NI0311"] },
+  { id:"NI0314", nombre:"Gestión de la información (NI0314)", creditos:1, prereq:["NI0311"], coreq:[] },
 
   // SEM 3
-  { id:"EC0421", nombre:"Economía del Comercio Internacional (EC0421)", creditos:3, prereq:["EC0418"] },
-  { id:"FI0138", nombre:"Fundamentos de Finanzas (FI0138)", creditos:3, prereq:["CO0342"] },
-  { id:"NI0316", nombre:"Pensamiento Histórico de los Negocios (NI0316)", creditos:3, prereq:["NI0104"] },
-  { id:"NI0317", nombre:"Derecho del Comercio Internacional (NI0317)", creditos:3, prereq:[] },
-  { id:"NI0318", nombre:"Presentaciones Efectivas (NI0318)", creditos:1, prereq:[] },
-  { id:"NI0319", nombre:"Proyecto 2: Selección de Mercados (NI0319)", creditos:3, prereq:["NI0100"] },
+  { id:"EC0421", nombre:"Economía del Comercio Internacional (EC0421)", creditos:3, prereq:["EC0418"], coreq:[] },
+  { id:"FI0138", nombre:"Fundamentos de Finanzas (FI0138)", creditos:3, prereq:["CO0342"], coreq:[] },
+  { id:"NI0316", nombre:"Pensamiento Histórico de los Negocios (NI0316)", creditos:3, prereq:["NI0104"], coreq:[] },
+  { id:"NI0317", nombre:"Derecho del Comercio Internacional (NI0317)", creditos:3, prereq:[], coreq:[] },
+  { id:"NI0318", nombre:"Presentaciones Efectivas (NI0318)", creditos:1, prereq:[], coreq:[] },
+  { id:"NI0319", nombre:"Proyecto 2: Selección de Mercados (NI0319)", creditos:3, prereq:["NI0100"], coreq:[] },
 
   // SEM 4
-  { id:"NI0320", nombre:"Gestión de la Distribución Física Internacional 1 (NI0320)", creditos:1, prereq:["CREDITS>=46"] },
-  { id:"NI0321", nombre:"Análisis Geopolítico (NI0321)", creditos:3, prereq:["NI0316"] },
-  { id:"NI0322", nombre:"Comunicación Escrita (NI0322)", creditos:1, prereq:[] },
-  { id:"NI0323", nombre:"Proyecto 3: Integración Económica y Acceso a Mercados (NI0323)", creditos:3, prereq:["NI0317"] },
-  { id:"NI0324", nombre:"Estadística Aplicada a los Negocios (NI0324)", creditos:3, prereq:["CM0212"] },
-  { id:"OG0368", nombre:"Formulación y Evaluación de Proyectos (OG0368)", creditos:3, prereq:["CO0342"] },
+  { id:"NI0320", nombre:"Gestión de la Distribución Física Internacional 1 (NI0320)", creditos:1, prereq:["CREDITS>=46"], coreq:[] },
+  { id:"NI0321", nombre:"Análisis Geopolítico (NI0321)", creditos:3, prereq:["NI0316"], coreq:[] },
+  { id:"NI0322", nombre:"Comunicación Escrita (NI0322)", creditos:1, prereq:[], coreq:[] },
+  { id:"NI0323", nombre:"Proyecto 3: Integración Económica y Acceso a Mercados (NI0323)", creditos:3, prereq:["NI0317"], coreq:[] },
+  { id:"NI0324", nombre:"Estadística Aplicada a los Negocios (NI0324)", creditos:3, prereq:["CM0212"], coreq:[] },
+  { id:"OG0368", nombre:"Formulación y Evaluación de Proyectos (OG0368)", creditos:3, prereq:["CO0342"], coreq:[] },
 
   // SEM 5
-  { id:"FI0224", nombre:"Finanzas Internacionales (FI0224)", creditos:3, prereq:["FI0138"] },
-  { id:"NI0251", nombre:"Gerencia Comercial Internacional (NI0251)", creditos:3, prereq:["NI0316","NI0321"] },
-  { id:"NI0325", nombre:"Introducción a estudios internacionales (NI0325)", creditos:2, prereq:["NI0316","NI0321"] },
-  { id:"NI0326", nombre:"Legislación de comercio exterior 1 (NI0326)", creditos:1, prereq:["CREDITS>=73"] },
-  { id:"NI0327", nombre:"Programación para los negocios (NI0327)", creditos:1, prereq:["NI0324","NI0322"] },
-  { id:"NI0328", nombre:"Proyecto 4: Organizaciones Intergubernamentales (NI0328)", creditos:3, prereq:["CREDITS>=55","NI0325","NI0323"] },
+  { id:"FI0224", nombre:"Finanzas Internacionales (FI0224)", creditos:3, prereq:["FI0138"], coreq:[] },
+  { id:"NI0251", nombre:"Gerencia Comercial Internacional (NI0251)", creditos:3, prereq:["NI0316","NI0321"], coreq:[] },
+  { id:"NI0325", nombre:"Introducción a estudios internacionales (NI0325)", creditos:2, prereq:["NI0316","NI0321"], coreq:[] },
+  { id:"NI0326", nombre:"Legislación de comercio exterior 1 (NI0326)", creditos:1, prereq:["CREDITS>=73"], coreq:[] },
+  { id:"NI0327", nombre:"Programación para los negocios (NI0327)", creditos:1, prereq:["NI0324","NI0322"], coreq:[] },
+  { id:"NI0328", nombre:"Proyecto 4: Organizaciones Intergubernamentales (NI0328)", creditos:3, prereq:["CREDITS>=55","NI0325","NI0323"], coreq:[] },
 
   // SEM 6
-  { id:"CO0371", nombre:"Analítica de Negocios (CO0371)", creditos:3, prereq:["NI0324","NI0327"] },
-  { id:"NI0299", nombre:"Gestión Intercultural (NI0299)", creditos:3, prereq:["CREDITS>=74"] },
-  { id:"NI0329", nombre:"Estrategia Internacional (NI0329)", creditos:3, prereq:["CREDITS>=74"] },
-  { id:"NI0330", nombre:"Gestión de la Cadena de Suministro Global 1 (NI0330)", creditos:1, prereq:["NI0320"] },
-  { id:"NI0331", nombre:"Protocolo Empresarial (NI0331)", creditos:1, prereq:[] },
-  { id:"NI0332", nombre:"Proyecto 5: Cadenas de Suministro Globales (NI0332)", creditos:3, prereq:["NI0326","NI0320"] },
+  { id:"CO0371", nombre:"Analítica de Negocios (CO0371)", creditos:3, prereq:["NI0324","NI0327"], coreq:[] },
+  { id:"NI0299", nombre:"Gestión Intercultural (NI0299)", creditos:3, prereq:["CREDITS>=74"], coreq:[] },
+  { id:"NI0329", nombre:"Estrategia Internacional (NI0329)", creditos:3, prereq:["CREDITS>=74"], coreq:[] },
+  { id:"NI0330", nombre:"Gestión de la Cadena de Suministro Global 1 (NI0330)", creditos:1, prereq:["NI0320"], coreq:[] },
+  { id:"NI0331", nombre:"Protocolo Empresarial (NI0331)", creditos:1, prereq:[], coreq:[] },
+  { id:"NI0332", nombre:"Proyecto 5: Cadenas de Suministro Globales (NI0332)", creditos:3, prereq:["NI0326","NI0320"], coreq:[] },
 
   // SEM 7
-  { id:"NI0333", nombre:"Negociación de Contratos Internacionales (NI0333)", creditos:2, prereq:["NI0323"] },
-  { id:"NI0334", nombre:"Laboratorio Multilingüe (NI0334)", creditos:1, prereq:["NI0299"] },
-  { id:"NI0335", nombre:"Proyecto 6: Plan de Internacionalización (NI0335)", creditos:3, prereq:["NI0329"] },
-  { id:"OG0370", nombre:"Competencias Evaluativas (OG0370)", creditos:1, prereq:["CREDITS>=90"] },
-  { id:"PT0113", nombre:"Pre-Práctica (PT0113)", creditos:0, prereq:[] },
-  { id:"PT4002", nombre:"Práctica Negocios Internacionales (PT4002)", creditos:0, prereq:[] },
+  { id:"NI0333", nombre:"Negociación de Contratos Internacionales (NI0333)", creditos:2, prereq:["NI0323"], coreq:[] },
+  { id:"NI0334", nombre:"Laboratorio Multilingüe (NI0334)", creditos:1, prereq:["NI0299"], coreq:[] },
+  { id:"NI0335", nombre:"Proyecto 6: Plan de Internacionalización (NI0335)", creditos:3, prereq:["NI0329"], coreq:[] },
+  { id:"OG0370", nombre:"Competencias Evaluativas (OG0370)", creditos:1, prereq:["CREDITS>=90"], coreq:[] },
+  { id:"PT0113", nombre:"Pre-Práctica (PT0113)", creditos:0, prereq:[], coreq:[] },
+  { id:"PT4002", nombre:"Práctica Negocios Internacionales (PT4002)", creditos:0, prereq:[], coreq:[] },
 
   // SEM 8
-  { id:"PT0191", nombre:"Período de Práctica (PT0191)", creditos:18, prereq:["PT0113","NI0335","NI0326","NI0330","CREDITS>=111"] },
+  { id:"PT0191", nombre:"Período de Práctica (PT0191)", creditos:18, prereq:["PT0113","NI0335","NI0326","NI0330","CREDITS>=111"], coreq:[] },
 
   // SEM 9
-  { id:"NI0336", nombre:"Negociación Internacional (NI0336)", creditos:2, prereq:["NI0333","PT0191"] },
-  { id:"NI0337", nombre:"Gerencia Internacional (NI0337)", creditos:3, prereq:["NI0335","PT0191"] },
-  { id:"OG0372", nombre:"Proyecto EA (OG0372)", creditos:2, prereq:["PT0191","CREDITS>=100"] },
-  { id:"OG0373", nombre:"Seminario Internacional (OG0373)", creditos:1, prereq:["PT0191","CREDITS>=100"] }
+  { id:"NI0336", nombre:"Negociación Internacional (NI0336)", creditos:2, prereq:["NI0333","PT0191"], coreq:[] },
+  { id:"NI0337", nombre:"Gerencia Internacional (NI0337)", creditos:3, prereq:["NI0335","PT0191"], coreq:[] },
+  { id:"OG0372", nombre:"Proyecto EA (OG0372)", creditos:2, prereq:["PT0191","CREDITS>=100"], coreq:[] },
+  { id:"OG0373", nombre:"Seminario Internacional (OG0373)", creditos:1, prereq:["PT0191","CREDITS>=100"], coreq:[] }
 ];
 
-// ===========================
-// Estado interno
-// ===========================
-let estado = {}; // id -> "blocked"|"available"|"pending"|"inprogress"|"approved"
-let approvedCredits = 0;
-
-// Inicializar: todos bloqueados inicialmente; luego se actualizará disponibilidad
-materias.forEach(m => estado[m.id] = "blocked");
-
-// total de créditos (para progress)
-const totalCredits = materias.reduce((s,m) => s + (typeof m.creditos === "number" ? m.creditos : 0), 0);
-
-// ===========================
-// Utilidades para comprobar prerrequisitos
-// ===========================
-function checkPrereqSatisfied(pr) {
-  // pr puede ser un código (p.ej. "CM0211") o "CREDITS>=46" o "BILINGUE_B1" o similar
-  if (!pr) return true;
-  if (pr.startsWith("CREDITS>=")) {
-    const n = parseInt(pr.split(">=")[1]);
-    return approvedCredits >= n;
-  }
-  if (pr === "BILINGUE_B1") {
-    // asumimos que el usuario cumple bilingüismo? Por seguridad lo dejamos bloqueado hasta que apruebes NI0104.
-    // Aquí decidimos: tratar "BILINGUE_B1" como un prerrequisito que NO se satisface automáticamente.
-    return estado["NI0104"] === "approved";
-  }
-  // es un codigo; verificar que exista y esté aprobado
-  if (estado[pr] && estado[pr] === "approved") return true;
-  return false;
-}
-
-// dado un array de prereqs, devolver true si todos se cumplen
-function allPrereqsSatisfied(prereqArray) {
-  if (!prereqArray || prereqArray.length === 0) return true;
-  return prereqArray.every(p => checkPrereqSatisfied(p));
-}
-
-// ===========================
-// Construcción UI
-// ===========================
-const main = document.getElementById("main-accordion");
-const approvedSpan = document.getElementById("approved-credits");
-const totalSpan = document.getElementById("total-credits");
-const progressBar = document.getElementById("progress-bar");
-
-totalSpan.textContent = totalCredits;
-
-// agrupar materias por semestre según códigos en la lista original (vamos a derivarlo por orden y bloques)
+// Agrupación por semestres (orden de visualización)
 const semestres = [
   { num:1, ids:["BU0008","BU0011","BU0600","CM0211","EC0418","NI0104","NI0310","NI0311","OG0360"] },
   { num:2, ids:["CM0212","CO0342","NI0100","NI0312","NI0313","NI0314"] },
@@ -133,20 +84,107 @@ const semestres = [
   { num:9, ids:["NI0336","NI0337","OG0372","OG0373"] }
 ];
 
-function findMateriaById(id){
-  return materias.find(m => m.id === id);
+// ----------------------
+// Estado y persistencia
+// ----------------------
+const STORAGE_KEY = "pensum_eafit_v1";
+let state = {
+  // id -> "blocked"|"available"|"inprogress"|"approved"
+  materiaState: {}, 
+  bilingual: false
+};
+
+// total credits
+const totalCredits = materias.reduce((s,m) => s + (m.creditos||0), 0);
+
+// DOM references
+const main = document.getElementById("main-accordion");
+const approvedSpan = document.getElementById("approved-credits");
+const totalSpan = document.getElementById("total-credits");
+const progressBar = document.getElementById("progress-bar");
+const bilingCheckbox = document.getElementById("bilingue-checkbox");
+const saveBtn = document.getElementById("save-btn");
+const resetBtn = document.getElementById("reset-btn");
+
+totalSpan.textContent = totalCredits;
+
+// helpers
+function findById(id){ return materias.find(m => m.id === id); }
+
+// load/save
+function loadState(){
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if (raw){
+    try{
+      const obj = JSON.parse(raw);
+      if (obj && obj.materiaState) state = obj;
+    }catch(e){
+      console.warn("No se pudo cargar estado:", e);
+    }
+  }
+}
+function saveState(){
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  showToast("Progreso guardado");
 }
 
-// crear acordeón
-function buildAccordion(){
-  main.innerHTML = ""; // limpiar
+// initialize default state
+function initState(){
+  materias.forEach(m => {
+    if (!state.materiaState[m.id]) state.materiaState[m.id] = "blocked";
+  });
+  if (typeof state.bilingual !== "boolean") state.bilingual = false;
+}
+
+// Check one prereq (string)
+function checkPrereq(pr){
+  if (!pr) return true;
+  // credits condition
+  if (pr.startsWith("CREDITS>=")){
+    const need = parseInt(pr.split(">=")[1]);
+    return getApprovedCredits() >= need;
+  }
+  if (pr === "BILINGUE_B1"){
+    return !!state.bilingual;
+  }
+  // direct id
+  if (state.materiaState[pr] && state.materiaState[pr] === "approved") return true;
+  return false;
+}
+
+function allPrereqsSatisfied(arr){
+  if (!arr || arr.length === 0) return true;
+  return arr.every(p => checkPrereq(p));
+}
+
+function getApprovedCredits(){
+  return materias.reduce((s,m) => {
+    const st = state.materiaState[m.id];
+    return s + ((st === "approved") ? (m.creditos||0) : 0);
+  }, 0);
+}
+
+// compute availability for everything
+function updateAvailability(){
+  materias.forEach(m => {
+    const id = m.id;
+    // if already approved, keep approved
+    if (state.materiaState[id] === "approved") return;
+    const satisfied = allPrereqsSatisfied(m.prereq || []);
+    state.materiaState[id] = satisfied ? "available" : "blocked";
+  });
+}
+
+// build UI
+function buildUI(){
+  main.innerHTML = "";
   semestres.forEach(s => {
     const item = document.createElement("div");
     item.className = "accordion-item";
 
     const header = document.createElement("div");
     header.className = "accordion-header";
-    header.innerHTML = `<h3>Semestre ${s.num}</h3><div class="semester-meta">${s.ids.length} materias</div>`;
+    header.innerHTML = `<h3>Semestre ${s.num}</h3><div class="meta">${s.ids.length} materias</div>`;
 
     const body = document.createElement("div");
     body.className = "accordion-body";
@@ -155,25 +193,64 @@ function buildAccordion(){
     grid.className = "subjects-grid";
 
     s.ids.forEach(id => {
-      const m = findMateriaById(id);
+      const m = findById(id);
       if (!m) return;
       const card = document.createElement("div");
       card.className = "subject-card";
       card.setAttribute("data-id", m.id);
-      card.setAttribute("data-state", "pending"); // será actualizado luego
+
+      // prereqs display text
+      const prereqText = (m.prereq && m.prereq.length) ? m.prereq.join(", ") : "Ninguno";
+      const coreqText = (m.coreq && m.coreq.length) ? m.coreq.join(", ") : null;
+
       card.innerHTML = `
         <div>
           <div class="subject-title">${m.nombre}</div>
-          <div class="subject-meta">${m.creditos} cr</div>
-          <div class="prereq"><strong>Prereq:</strong> ${ (m.prereq && m.prereq.length) ? m.prereq.join(", ") : "Ninguno" }${ (m.coreq && m.coreq.length) ? " | Coreq: " + m.coreq.join(", ") : "" }</div>
+          <div class="subject-sub"><span class="badge">${m.id}</span> • ${m.creditos} cr</div>
+          <div class="prereq"><strong>Prerrequisitos:</strong> ${prereqText}${ coreqText ? " • <strong>Correquisito:</strong> " + coreqText : "" }</div>
         </div>
       `;
 
-      // click handler
+      // click handling
       card.addEventListener("click", (e) => {
         const id = card.getAttribute("data-id");
-        if (card.classList.contains("blocked")) return; // no clickable
-        cycleState(id);
+        const curr = state.materiaState[id];
+        if (curr === "blocked"){
+          // show missing prereqs
+          const mobj = findById(id);
+          const missing = (mobj.prereq || []).filter(p => !checkPrereq(p));
+          const missingText = missing.map(pm => {
+            if (pm.startsWith("CREDITS>=")) {
+              const n = parseInt(pm.split(">=")[1]);
+              const r = Math.max(0, n - getApprovedCredits());
+              return `${n} créditos (faltan ${r})`;
+            }
+            if (pm === "BILINGUE_B1") return "Bilingüismo (nivel B1)";
+            return pm;
+          }).join(", ");
+          alert("No puedes iniciar esta materia todavía.\nRequisitos pendientes: " + (missingText||"Ninguno"));
+          return;
+        }
+
+        // cycle: available -> inprogress -> approved -> available
+        if (curr === "available"){
+          state.materiaState[id] = "inprogress";
+          showToast(`Materia "${m.nombre}" marcada como EN CURSO`);
+        } else if (curr === "inprogress"){
+          // confirm approve
+          const confirmApprove = confirm(`¿Marcar "${m.nombre}" como APROBADA?`);
+          if (!confirmApprove) return;
+          state.materiaState[id] = "approved";
+          showToast(`¡"${m.nombre}" aprobada!`);
+        } else if (curr === "approved"){
+          const confirmUndo = confirm(`¿Quitar aprobación de "${m.nombre}"? Esto puede bloquear materias dependientes.`);
+          if (!confirmUndo) return;
+          state.materiaState[id] = "available";
+          showToast(`Aprobación de "${m.nombre}" eliminada.`);
+        }
+
+        // after change, recompute
+        updateAfterChange();
       });
 
       grid.appendChild(card);
@@ -184,121 +261,100 @@ function buildAccordion(){
     item.appendChild(body);
     main.appendChild(item);
 
-    // header click (acordeón)
+    // accordion click
     header.addEventListener("click", () => {
-      if (body.style.maxHeight) {
-        body.style.maxHeight = null;
-      } else {
-        // cerrar otros
-        document.querySelectorAll(".accordion-body").forEach(b => b.style.maxHeight = null);
+      const open = body.style.maxHeight && body.style.maxHeight !== "0px";
+      // close others
+      document.querySelectorAll(".accordion-body").forEach(b => b.style.maxHeight = null);
+      if (!open){
         body.style.maxHeight = body.scrollHeight + "px";
       }
     });
   });
 
-  updateAllStates(); // pintar estados iniciales
+  refreshUIStates();
 }
 
-// ===========================
-// Lógica de estados
-// Estados posibles en 'estado' obj: "blocked","available","pending","inprogress","approved"
-// En la UI usamos data-state y clases blocked/approved/inprogress
-// ===========================
-function computeApprovedCredits(){
-  approvedCredits = 0;
-  for(const id in estado){
-    if (estado[id] === "approved"){
-      const m = findMateriaById(id);
-      approvedCredits += (m && typeof m.creditos === "number") ? m.creditos : 0;
-    }
-  }
-  approvedSpan.textContent = approvedCredits;
-  const pct = totalCredits === 0 ? 0 : Math.round( (approvedCredits / totalCredits) * 100 );
+// refresh UI based on state
+function refreshUIStates(){
+  // update availability before painting
+  updateAvailability();
+
+  // update progress numbers
+  const approved = getApprovedCredits();
+  approvedSpan.textContent = approved;
+  const pct = totalCredits === 0 ? 0 : Math.round((approved / totalCredits) * 100);
   progressBar.style.width = pct + "%";
-}
 
-// actualiza disponibilidad: si todas las prereqs (tipo codigo o CREDITS>=X) se cumplen, queda available (si no aprobado aún)
-function updateAvailability(){
-  materias.forEach(m => {
-    const id = m.id;
-    // si ya aprobado, keep approved
-    if (estado[id] === "approved") return;
-    const prereqs = m.prereq || [];
-    const satisfied = allPrereqsSatisfied(prereqs);
-    estado[id] = satisfied ? "available" : "blocked";
-  });
-}
-
-// cambia el estado ciclando y actualiza aprobación y desbloqueos
-function cycleState(id){
-  const current = estado[id];
-  if (current === "blocked") return;
-  if (current === "available" || current === "pending"){
-    // pasar a inprogress
-    estado[id] = "inprogress";
-  } else if (current === "inprogress"){
-    // pasar a approved
-    estado[id] = "approved";
-  } else if (current === "approved"){
-    // quitar aprobada -> available
-    estado[id] = "available";
-  }
-  // si approved cambió, recomputar créditos y disponibilidad de otros
-  computeApprovedCredits();
-  updateAvailability();
-  updateAllStates();
-}
-
-// repintar todas las cards según 'estado' global
-function updateAllStates(){
-  // primera, asegurar disponibilidad antes de pintar
-  updateAvailability();
-  computeApprovedCredits();
-
+  // set card states
   document.querySelectorAll(".subject-card").forEach(card => {
     const id = card.getAttribute("data-id");
-    const st = estado[id] || "blocked";
-    card.classList.remove("blocked");
-    card.classList.remove("approved");
-    card.classList.remove("inprogress");
-    card.classList.remove("pending");
-    card.setAttribute("data-state","pending");
-
-    if (st === "blocked"){
-      card.classList.add("blocked");
-      card.setAttribute("data-state","pending");
-    } else if (st === "available"){
-      card.classList.add("pending"); // disponible pero no iniciado
-      card.setAttribute("data-state","pending");
-    } else if (st === "inprogress"){
-      card.classList.add("inprogress");
-      card.setAttribute("data-state","inprogress");
-    } else if (st === "approved"){
-      card.classList.add("approved");
-      card.setAttribute("data-state","approved");
-    }
+    const st = state.materiaState[id] || "blocked";
+    card.setAttribute("data-state", st === "blocked" ? "blocked" : (st === "inprogress" ? "inprogress" : (st === "approved" ? "approved" : "available")));
   });
 
-  // actualizar texto de créditos
-  approvedSpan.textContent = approvedCredits;
+  // bilingual checkbox reflect state
+  bilingCheckbox.checked = !!state.bilingual;
 }
 
-// ===========================
-// Inicialización
-// ===========================
-function init(){
-  // por defecto, tratamos NI0104 (Negocios Internacionales) como available si no exige bilingüismo;
-  // pero en la tabla dice Bilingüismo: nivel B1 — lo dejamos bloqueado hasta que apruebes NI0104 itself? 
-  // Mejor: permitir NI0104 disponible (usuaria lo puede aprobar), y tratar BILINGUE_B1 como prerrequisito a otros que lo pidan.
-  // En datos, NI0104 no tiene prereq: por eso inicializamos availability.
-  materias.forEach(m => {
-    estado[m.id] = "blocked";
-  });
-
-  // marcar como available aquellos sin prereqs
+// called after any state change
+function updateAfterChange(){
+  // recompute availability and show counts of unlocked
   updateAvailability();
-  buildAccordion();
-  computeApprovedCredits();
+
+  // count how many became available in this step? optional
+  // save automatically
+  saveState();
+  refreshUIStates();
 }
 
-init();
+// small toast (simple)
+function showToast(msg){
+  // quick alert-free toast using a small DOM element
+  const t = document.createElement("div");
+  t.textContent = msg;
+  t.style.position = "fixed";
+  t.style.right = "18px";
+  t.style.bottom = "18px";
+  t.style.background = "linear-gradient(90deg,#8e44ad,#b288dd)";
+  t.style.color = "white";
+  t.style.padding = "8px 12px";
+  t.style.borderRadius = "8px";
+  t.style.boxShadow = "0 8px 24px rgba(0,0,0,0.12)";
+  t.style.zIndex = 9999;
+  document.body.appendChild(t);
+  setTimeout(()=> { t.style.opacity = "0"; setTimeout(()=>t.remove(),400); }, 1600);
+}
+
+// Save/reset buttons handlers
+saveBtn.addEventListener("click", () => {
+  saveState();
+});
+resetBtn.addEventListener("click", () => {
+  const ok = confirm("¿Seguro que quieres resetear todo el progreso? Esta acción no se puede deshacer.");
+  if (!ok) return;
+  // clear localstorage and reset state
+  localStorage.removeItem(STORAGE_KEY);
+  // rebuild fresh
+  state = { materiaState: {}, bilingual: false };
+  initState();
+  updateAvailability();
+  buildUI();
+  showToast("Progreso reseteado");
+});
+
+// bilingual checkbox
+bilingCheckbox.addEventListener("change", (e) => {
+  state.bilingual = !!e.target.checked;
+  updateAfterChange();
+});
+
+// persistence: load if exist
+loadState();
+initState();
+updateAvailability();
+buildUI();
+
+// auto-save on unload
+window.addEventListener("beforeunload", () => saveState());
+

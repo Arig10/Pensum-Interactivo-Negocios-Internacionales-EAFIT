@@ -3,29 +3,40 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Pensum Interactivo - Negocios Internacionales (EAFIT)</title>
+  <title>Pensum Interactivo — Negocios Internacionales (EAFIT)</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
     <h1>Pensum Interactivo — Negocios Internacionales (EAFIT)</h1>
-    <p class="subtitle">Haz clic en un ramo para cambiar su estado: <strong>Pendiente → Cursando → Aprobada</strong>. Al aprobar, los ramos que lo requieren se desbloquean automáticamente si cumplen todos sus prerrequisitos.</p>
-    <div class="progress-wrap">
-      <div class="progress-info">
-        <span id="approved-credits">0</span> / <span id="total-credits">0</span> créditos aprobados
+    <p class="subtitle">Haz clic en una materia: <strong>Pendiente → En curso → Aprobada</strong>. Al aprobar, se desbloquean automáticamente las materias que dependan de ella.</p>
+
+    <div class="controls">
+      <label class="bilingue">
+        <input type="checkbox" id="bilingue-checkbox" />
+        Tengo bilingüismo (nivel B1)
+      </label>
+      <div class="action-buttons">
+        <button id="save-btn" class="btn">Guardar progreso</button>
+        <button id="reset-btn" class="btn btn-ghost">Resetear progreso</button>
       </div>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress-info"><span id="approved-credits">0</span> / <span id="total-credits">120</span> créditos aprobados</div>
       <div class="progress-bar-bg"><div id="progress-bar" class="progress-bar-fill"></div></div>
     </div>
   </header>
 
-  <main id="main-accordion"></main>
+  <main id="main-accordion" aria-live="polite"></main>
 
   <footer>
-    <small>Interactividad: clic sobre cada cuadro de materia. Retiros/estado no persisten al recargar (si quieres persistencia lo agregamos con localStorage).</small>
+    <small>Estados guardados automáticamente en este dispositivo. Si quieres borrar todo: Resetear progreso.</small>
   </footer>
 
   <script src="script.js"></script>
 </body>
 </html>
+
 
 

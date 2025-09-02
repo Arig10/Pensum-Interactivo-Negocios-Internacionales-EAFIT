@@ -1,189 +1,30 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Pensum Negocios Internacionales - EAFIT</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
-      margin: 0;
-      padding: 20px;
-    }
-    h1 {
-      text-align: center;
-      color: #333;
-    }
-    .accordion {
-      background-color: #004080;
-      color: #fff;
-      cursor: pointer;
-      padding: 15px;
-      width: 100%;
-      border: none;
-      outline: none;
-      transition: 0.4s;
-      margin-top: 10px;
-      font-size: 16px;
-      border-radius: 5px;
-    }
-    .active, .accordion:hover {
-      background-color: #0066cc;
-    }
-    .panel {
-      padding: 0 15px;
-      background-color: white;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.2s ease-out;
-      border: 1px solid #ddd;
-      border-radius: 0 0 5px 5px;
-      margin-bottom: 10px;
-    }
-    ul {
-      list-style: none;
-      padding: 10px;
-      margin: 0;
-    }
-    li {
-      margin: 5px 0;
-      padding: 8px;
-      background: #f0f8ff;
-      border-radius: 4px;
-      border-left: 4px solid #004080;
-    }
-    strong {
-      color: #004080;
-    }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pensum Interactivo - Negocios Internacionales (EAFIT)</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Pensum - Negocios Internacionales (EAFIT)</h1>
+  <header>
+    <h1>Pensum Interactivo — Negocios Internacionales (EAFIT)</h1>
+    <p class="subtitle">Haz clic en un ramo para cambiar su estado: <strong>Pendiente → Cursando → Aprobada</strong>. Al aprobar, los ramos que lo requieren se desbloquean automáticamente si cumplen todos sus prerrequisitos.</p>
+    <div class="progress-wrap">
+      <div class="progress-info">
+        <span id="approved-credits">0</span> / <span id="total-credits">0</span> créditos aprobados
+      </div>
+      <div class="progress-bar-bg"><div id="progress-bar" class="progress-bar-fill"></div></div>
+    </div>
+  </header>
 
-  <!-- 1er Semestre -->
-  <button class="accordion">Semestre 1</button>
-  <div class="panel">
-    <ul>
-      <li><strong>Matemáticas I</strong> - 3 créditos</li>
-      <li><strong>Fundamentos de Administración</strong> - 3 créditos</li>
-      <li><strong>Fundamentos de Economía</strong> - 3 créditos</li>
-      <li><strong>Introducción a los Negocios Internacionales</strong> - 3 créditos</li>
-      <li><strong>Idioma I</strong> - 2 créditos</li>
-      <li><strong>Humanidades I</strong> - 2 créditos</li>
-    </ul>
-  </div>
+  <main id="main-accordion"></main>
 
-  <!-- 2do Semestre -->
-  <button class="accordion">Semestre 2</button>
-  <div class="panel">
-    <ul>
-      <li><strong>Matemáticas II</strong> - 3 créditos | Pre: Matemáticas I</li>
-      <li><strong>Microeconomía</strong> - 3 créditos | Pre: Fundamentos de Economía</li>
-      <li><strong>Contabilidad Financiera</strong> - 3 créditos</li>
-      <li><strong>Historia Económica y Empresarial</strong> - 3 créditos</li>
-      <li><strong>Idioma II</strong> - 2 créditos | Pre: Idioma I</li>
-      <li><strong>Humanidades II</strong> - 2 créditos</li>
-    </ul>
-  </div>
+  <footer>
+    <small>Interactividad: clic sobre cada cuadro de materia. Retiros/estado no persisten al recargar (si quieres persistencia lo agregamos con localStorage).</small>
+  </footer>
 
-  <!-- 3er Semestre -->
-  <button class="accordion">Semestre 3</button>
-  <div class="panel">
-    <ul>
-      <li><strong>Estadística I</strong> - 3 créditos | Pre: Matemáticas II</li>
-      <li><strong>Macroeconomía</strong> - 3 créditos | Pre: Microeconomía</li>
-      <li><strong>Contabilidad de Costos</strong> - 3 créditos | Pre: Contabilidad Financiera</li>
-      <li><strong>Negocios Internacionales I</strong> - 3 créditos | Pre: Introducción a los Negocios Internacionales</li>
-      <li><strong>Idioma III</strong> - 2 créditos | Pre: Idioma II</li>
-      <li><strong>Electiva en Humanidades</strong> - 2 créditos</li>
-    </ul>
-  </div>
-
-  <!-- 4to Semestre -->
-  <button class="accordion">Semestre 4</button>
-  <div class="panel">
-    <ul>
-      <li><strong>Estadística II</strong> - 3 créditos | Pre: Estadística I</li>
-      <li><strong>Teoría de las Organizaciones</strong> - 3 créditos</li>
-      <li><strong>Mercadeo</strong> - 3 créditos</li>
-      <li><strong>Negocios Internacionales II</strong> - 3 créditos | Pre: Negocios Internacionales I</li>
-      <li><strong>Idioma IV</strong> - 2 créditos | Pre: Idioma III</li>
-      <li><strong>Constitución y Democracia</strong> - 2 créditos</li>
-    </ul>
-  </div>
-
-  <!-- 5to Semestre -->
-  <button class="accordion">Semestre 5</button>
-  <div class="panel">
-    <ul>
-      <li><strong>Finanzas I</strong> - 3 créditos</li>
-      <li><strong>Negociación Internacional</strong> - 3 créditos | Pre: Negocios Internacionales II</li>
-      <li><strong>Economía Internacional</strong> - 3 créditos | Pre: Macroeconomía</li>
-      <li><strong>Electiva Profesional</strong> - 3 créditos</li>
-      <li><strong>Idioma V</strong> - 2 créditos | Pre: Idioma IV</li>
-      <li><strong>Ética y Ciudadanía</strong> - 2 créditos</li>
-    </ul>
-  </div>
-
-  <!-- 6to Semestre -->
-  <button class="accordion">Semestre 6</button>
-  <div class="panel">
-    <ul>
-      <li><strong>Finanzas II</strong> - 3 créditos | Pre: Finanzas I</li>
-      <li><strong>Logística Internacional</strong> - 3 créditos | Pre: Negociación Internacional</li>
-      <li><strong>Electiva Profesional</strong> - 3 créditos</li>
-      <li><strong>Derecho Internacional</strong> - 3 créditos</li>
-      <li><strong>Idioma VI</strong> - 2 créditos | Pre: Idioma V</li>
-    </ul>
-  </div>
-
-  <!-- 7mo Semestre -->
-  <button class="accordion">Semestre 7</button>
-  <div class="panel">
-    <ul>
-      <li><strong>Dirección Estratégica</strong> - 3 créditos</li>
-      <li><strong>Operaciones Internacionales</strong> - 3 créditos | Pre: Logística Internacional</li>
-      <li><strong>Electiva Profesional</strong> - 3 créditos</li>
-      <li><strong>Electiva de Libre Elección</strong> - 3 créditos</li>
-      <li><strong>Idioma VII</strong> - 2 créditos | Pre: Idioma VI</li>
-    </ul>
-  </div>
-
-  <!-- 8vo Semestre -->
-  <button class="accordion">Semestre 8</button>
-  <div class="panel">
-    <ul>
-      <li><strong>Gestión de Proyectos Internacionales</strong> - 3 créditos</li>
-      <li><strong>Comercio Exterior</strong> - 3 créditos</li>
-      <li><strong>Electiva Profesional</strong> - 3 créditos</li>
-      <li><strong>Seminario de Investigación</strong> - 3 créditos</li>
-      <li><strong>Idioma VIII</strong> - 2 créditos | Pre: Idioma VII</li>
-    </ul>
-  </div>
-
-  <!-- 9no Semestre -->
-  <button class="accordion">Semestre 9</button>
-  <div class="panel">
-    <ul>
-      <li><strong>Práctica Profesional</strong> - 12 créditos</li>
-      <li><strong>Trabajo de Grado</strong> - 4 créditos</li>
-    </ul>
-  </div>
-
-  <script>
-    var acc = document.getElementsByClassName("accordion");
-    for (let i = 0; i < acc.length; i++) {
-      acc[i].addEventListener("click", function () {
-        this.classList.toggle("active");
-        var panel = this.nextElementSibling;
-        if (panel.style.maxHeight) {
-          panel.style.maxHeight = null;
-        } else {
-          panel.style.maxHeight = panel.scrollHeight + "px";
-        }
-      });
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
 

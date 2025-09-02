@@ -302,7 +302,3 @@ function init(){
 }
 
 init();
-
-// ===========================
-// Nota: si quieres persistencia (guardar estados entre recargas), podemos agregar localStorage.
-// ===========================

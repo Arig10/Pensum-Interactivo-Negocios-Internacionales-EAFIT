@@ -1,56 +1,49 @@
 body {
   font-family: Arial, sans-serif;
-  background: #f8f5ff;
-  text-align: center;
-}
-
-h1 {
-  color: #5a2d82;
-  margin: 20px 0;
-}
-
-#malla {
-  display: grid;
-  grid-template-columns: repeat(9, 1fr);
-  gap: 15px;
+  background-color: #faf5ff;
+  color: #4b0082;
+  margin: 0;
   padding: 20px;
 }
 
-.semestre {
-  background: #eee0ff;
-  padding: 10px;
-  border-radius: 12px;
-  box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+h1 {
+  text-align: center;
+  color: #800080;
+  margin-bottom: 20px;
 }
 
-.semestre h2 {
-  color: #5a2d82;
-  font-size: 16px;
-  margin-bottom: 10px;
+.semestre {
+  background-color: #e6ccff;
+  border: 1px solid #b266ff;
+  border-radius: 8px;
+  margin: 10px 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.semestre-header {
+  background-color: #d1a3ff;
+  cursor: pointer;
+  padding: 12px;
+  font-weight: bold;
+}
+
+.semestre-header:hover {
+  background-color: #c285ff;
+}
+
+.semestre-contenido {
+  display: none;
+  padding: 10px;
+  background-color: #f3e6ff;
 }
 
 .materia {
-  background: #cdb4f9;
-  padding: 8px;
-  margin: 6px 0;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: 0.3s;
+  margin: 8px 0;
+  padding: 6px;
+  border-bottom: 1px solid #d9b3ff;
 }
 
-.materia.bloqueada {
-  background: #ddd;
-  cursor: not-allowed;
-  opacity: 0.6;
+.materia strong {
+  color: #4b0082;
 }
-
-.materia.disponible {
-  background: #e0c3fc;
-}
-
-.materia.aprobada {
-  background: #9d4edd;
-  color: white;
-}
-

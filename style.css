@@ -1,1 +1,56 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f8f5ff;
+  text-align: center;
+}
+
+h1 {
+  color: #5a2d82;
+  margin: 20px 0;
+}
+
+#malla {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 15px;
+  padding: 20px;
+}
+
+.semestre {
+  background: #eee0ff;
+  padding: 10px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+}
+
+.semestre h2 {
+  color: #5a2d82;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.materia {
+  background: #cdb4f9;
+  padding: 8px;
+  margin: 6px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.materia.bloqueada {
+  background: #ddd;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.materia.disponible {
+  background: #e0c3fc;
+}
+
+.materia.aprobada {
+  background: #9d4edd;
+  color: white;
+}
 
